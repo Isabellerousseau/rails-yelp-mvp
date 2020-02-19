@@ -1,0 +1,30 @@
+<div class="container mt-3">
+<h1><%= @restaurant.name %></h1>
+<ul>
+  <li><%= @restaurant.address %></li>
+  <li><%= @restaurant.phone_number %></li>
+  <li><%= @restaurant.category %></li>
+</ul>
+
+<a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    show <%= @restaurant.name %> reviews
+  </a>
+  <div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <ol>
+    <% @restaurant.reviews.each do |review| %>
+    <li class="mt-2"><strong><%= review.content %></strong> rating: <%= review.rating %> stars</li>
+    <% end %>
+    </ol>
+
+  </div>
+</div>
+
+<div class="mt-5">
+
+<p><%= link_to "Add a review", new_restaurant_review_path(@restaurant) %></p>
+<p><%= link_to "Back to restaurants", restaurants_path %></p>
+<p><%= link_to "update #{@restaurant.name}", edit_restaurant_path(@restaurant) %></p>
+</p>
+</div>
+</div>
